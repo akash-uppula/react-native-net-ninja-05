@@ -8,10 +8,8 @@ const Layout = () => {
   const isDark = colorScheme === "dark";
 
   const colors = {
-    background: isDark ? "#121212" : "#ffffff",
     text: isDark ? "#ffffff" : "#000000",
     header: isDark ? "#1e1e1e" : "#ffffff",
-    border: isDark ? "#333333" : "#dddddd",
   };
 
   return (
