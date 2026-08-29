@@ -10,7 +10,7 @@ const ThemedButton = ({ title, ...props }) => {
   return (
     <Pressable
       {...props}
-      style={[
+      style={({ pressed }) => [
         {
           width: 180,
           paddingVertical: 12,
@@ -18,7 +18,9 @@ const ThemedButton = ({ title, ...props }) => {
           backgroundColor: colors.primary,
           alignItems: "center",
           marginVertical: 6,
+          transform: [{ scale: pressed ? 0.97 : 1 }],
         },
+
         props.style,
       ]}
     >
