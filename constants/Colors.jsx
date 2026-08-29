@@ -7,8 +7,12 @@ const Colors = {
     primary: "#333333",
     primaryText: "#ffffff",
 
+    inputBackground: "#ffffff",
+    inputText: "#000000",
+    inputBorder: "#cccccc",
+    placeholder: "#777777",
+
     header: "#ffffff",
-    border: "#dddddd",
   },
 
   dark: {
@@ -19,8 +23,12 @@ const Colors = {
     primary: "#ffffff",
     primaryText: "#000000",
 
+    inputBackground: "#1e1e1e",
+    inputText: "#ffffff",
+    inputBorder: "#444444",
+    placeholder: "#999999",
+
     header: "#1e1e1e",
-    border: "#333333",
   },
 };
 

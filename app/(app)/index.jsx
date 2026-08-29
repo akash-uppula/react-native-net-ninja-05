@@ -1,10 +1,10 @@
 import { StyleSheet, View } from "react-native";
 import { Link } from "expo-router";
 
-import ThemedView from "../components/ThemedView";
-import ThemedText from "../components/ThemedText";
-import ThemedButton from "../components/ThemedButton";
-import ThemedImage from "../components/ThemedImage";
+import ThemedView from "../../components/ThemedView";
+import ThemedText from "../../components/ThemedText";
+import ThemedButton from "../../components/ThemedButton";
+import ThemedImage from "../../components/ThemedImage";
 
 const Home = () => {
   return (
@@ -20,6 +20,14 @@ const Home = () => {
       </ThemedText>
 
       <View style={styles.linksContainer}>
+        <Link href="/login" asChild>
+          <ThemedButton title="Login" />
+        </Link>
+
+        <Link href="/register" asChild>
+          <ThemedButton title="Register" />
+        </Link>
+
         <Link href="/about" asChild>
           <ThemedButton title="About" />
         </Link>

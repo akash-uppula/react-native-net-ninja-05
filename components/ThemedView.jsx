@@ -1,24 +1,22 @@
-import { View } from "react-native";
-import { useColorScheme } from "react-native";
+import { View, useColorScheme } from "react-native";
 
 import Colors from "../constants/Colors";
 
-const ThemedView = ({ style, children }) => {
+const ThemedView = (props) => {
   const colorScheme = useColorScheme();
 
   const colors = Colors[colorScheme ?? "light"];
 
   return (
     <View
+      {...props}
       style={[
         {
           backgroundColor: colors.background,
         },
-        style,
+        props.style,
       ]}
-    >
-      {children}
-    </View>
+    />
   );
 };
 

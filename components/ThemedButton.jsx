@@ -1,24 +1,26 @@
-import { Pressable, Text } from "react-native";
-import { useColorScheme } from "react-native";
+import { Pressable, Text, useColorScheme } from "react-native";
 
 import Colors from "../constants/Colors";
 
-const ThemedButton = ({ title, onPress }) => {
+const ThemedButton = ({ title, ...props }) => {
   const colorScheme = useColorScheme();
 
   const colors = Colors[colorScheme ?? "light"];
 
   return (
     <Pressable
-      onPress={onPress}
-      style={{
-        width: 180,
-        paddingVertical: 12,
-        borderRadius: 8,
-        backgroundColor: colors.primary,
-        alignItems: "center",
-        marginVertical: 6,
-      }}
+      {...props}
+      style={[
+        {
+          width: 180,
+          paddingVertical: 12,
+          borderRadius: 8,
+          backgroundColor: colors.primary,
+          alignItems: "center",
+          marginVertical: 6,
+        },
+        props.style,
+      ]}
     >
       <Text
         style={{
