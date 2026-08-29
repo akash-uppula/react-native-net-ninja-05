@@ -1,33 +1,34 @@
-import { StyleSheet, Text, View, Image, Pressable } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { Link } from "expo-router";
 
-import bookImage from "../assets/img/book.png";
+import ThemedView from "../components/ThemedView";
+import ThemedText from "../components/ThemedText";
+import ThemedButton from "../components/ThemedButton";
+import ThemedImage from "../components/ThemedImage";
 
 const Home = () => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>My Shelf</Text>
+    <ThemedView style={styles.container}>
+      <ThemedText style={styles.title}>My Shelf</ThemedText>
 
-      <Image source={bookImage} style={styles.image} />
+      <ThemedImage style={styles.image} />
 
-      <Text style={styles.bookName}>The Alchemist</Text>
+      <ThemedText style={styles.bookName}>The Alchemist</ThemedText>
 
-      <Text style={styles.description}>A book I am currently reading.</Text>
+      <ThemedText style={styles.description}>
+        A book I am currently reading.
+      </ThemedText>
 
       <View style={styles.linksContainer}>
         <Link href="/about" asChild>
-          <Pressable style={styles.button}>
-            <Text style={styles.buttonText}>About</Text>
-          </Pressable>
+          <ThemedButton title="About" />
         </Link>
 
         <Link href="/contact" asChild>
-          <Pressable style={styles.button}>
-            <Text style={styles.buttonText}>Contact</Text>
-          </Pressable>
+          <ThemedButton title="Contact" />
         </Link>
       </View>
-    </View>
+    </ThemedView>
   );
 };
 
@@ -67,20 +68,5 @@ const styles = StyleSheet.create({
     width: "100%",
     alignItems: "center",
     marginTop: 30,
-  },
-
-  button: {
-    width: 180,
-    paddingVertical: 12,
-    borderRadius: 8,
-    backgroundColor: "#333",
-    alignItems: "center",
-    marginVertical: 6,
-  },
-
-  buttonText: {
-    color: "#fff",
-    fontSize: 16,
-    fontWeight: "bold",
   },
 });

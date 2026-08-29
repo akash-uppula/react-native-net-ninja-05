@@ -2,15 +2,14 @@ import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { useColorScheme } from "react-native";
 
+import Colors from "../constants/Colors";
+
 const Layout = () => {
   const colorScheme = useColorScheme();
 
   const isDark = colorScheme === "dark";
 
-  const colors = {
-    text: isDark ? "#ffffff" : "#000000",
-    header: isDark ? "#1e1e1e" : "#ffffff",
-  };
+  const colors = Colors[colorScheme ?? "light"];
 
   return (
     <>

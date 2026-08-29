@@ -1,15 +1,18 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet } from "react-native";
+
+import ThemedView from "../components/ThemedView";
+import ThemedText from "../components/ThemedText";
 
 const About = () => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>About My Shelf</Text>
+    <ThemedView style={styles.container}>
+      <ThemedText style={styles.title}>About My Shelf</ThemedText>
 
-      <Text style={styles.description}>
+      <ThemedText style={styles.description}>
         My Shelf is a simple app where I can keep track of the books I am
         reading.
-      </Text>
-    </View>
+      </ThemedText>
+    </ThemedView>
   );
 };
 
