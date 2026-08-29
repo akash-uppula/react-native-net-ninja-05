@@ -1,10 +1,10 @@
 import { StyleSheet } from "react-native";
-import { Link } from "expo-router";
 
 import ThemedView from "../../components/ThemedView";
 import ThemedText from "../../components/ThemedText";
 import ThemedInput from "../../components/ThemedInput";
 import ThemedButton from "../../components/ThemedButton";
+import ThemedLink from "../../components/ThemedLink";
 
 const Register = () => {
   return (
@@ -26,9 +26,9 @@ const Register = () => {
         onPress={() => console.log("Register pressed")}
       />
 
-      <Link href="/login" style={styles.link}>
+      <ThemedLink href="/login" style={styles.link}>
         Already have an account? Login
-      </Link>
+      </ThemedLink>
     </ThemedView>
   );
 };
@@ -51,7 +51,5 @@ const styles = StyleSheet.create({
 
   link: {
     marginTop: 15,
-    fontSize: 15,
-    textDecorationLine: "underline",
   },
 });
