@@ -3,20 +3,17 @@ import { StyleSheet } from "react-native";
 import ThemedView from "../../components/ThemedView";
 import ThemedText from "../../components/ThemedText";
 
-const About = () => {
+const Books = () => {
   return (
     <ThemedView style={styles.container}>
-      <ThemedText style={styles.title}>About My Shelf</ThemedText>
+      <ThemedText style={styles.title}>My Books</ThemedText>
 
-      <ThemedText style={styles.description}>
-        My Shelf is a simple app where I can keep track of the books I am
-        reading.
-      </ThemedText>
+      <ThemedText style={styles.text}>Your books will appear here.</ThemedText>
     </ThemedView>
   );
 };
 
-export default About;
+export default Books;
 
 const styles = StyleSheet.create({
   container: {
@@ -29,11 +26,10 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 28,
     fontWeight: "bold",
-    marginBottom: 20,
+    marginBottom: 10,
   },
 
-  description: {
+  text: {
     fontSize: 16,
-    textAlign: "center",
   },
 });

@@ -19,21 +19,13 @@ const Home = () => {
         A book I am currently reading.
       </ThemedText>
 
-      <View style={styles.linksContainer}>
+      <View style={styles.buttons}>
         <Link href="/login" asChild>
           <ThemedButton title="Login" />
         </Link>
 
         <Link href="/register" asChild>
           <ThemedButton title="Register" />
-        </Link>
-
-        <Link href="/about" asChild>
-          <ThemedButton title="About" />
-        </Link>
-
-        <Link href="/contact" asChild>
-          <ThemedButton title="Contact" />
         </Link>
       </View>
     </ThemedView>
@@ -53,7 +45,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 28,
     fontWeight: "bold",
-    marginVertical: 20,
+    marginBottom: 20,
   },
 
   image: {
@@ -72,9 +64,8 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
 
-  linksContainer: {
-    width: "100%",
-    alignItems: "center",
+  buttons: {
     marginTop: 30,
+    alignItems: "center",
   },
 });

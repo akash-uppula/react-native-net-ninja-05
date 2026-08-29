@@ -11,7 +11,11 @@ const Layout = () => {
     <>
       <StatusBar style={isDark ? "light" : "dark"} />
 
-      <Stack screenOptions={{ headerShown: false }} />
+      <Stack
+        screenOptions={{
+          headerShown: false,
+        }}
+      />
     </>
   );
 };

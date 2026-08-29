@@ -20,7 +20,6 @@ const ThemedButton = ({ title, ...props }) => {
           marginVertical: 6,
           transform: [{ scale: pressed ? 0.97 : 1 }],
         },
-
         props.style,
       ]}
     >

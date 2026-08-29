@@ -30,20 +30,6 @@ const AppLayout = () => {
           title: "My Shelf",
         }}
       />
-
-      <Stack.Screen
-        name="about"
-        options={{
-          title: "About",
-        }}
-      />
-
-      <Stack.Screen
-        name="contact"
-        options={{
-          title: "Contact",
-        }}
-      />
     </Stack>
   );
 };

@@ -13,6 +13,11 @@ const Colors = {
     placeholder: "#777777",
 
     header: "#ffffff",
+
+    tabBackground: "#ffffff",
+    tabActive: "#333333",
+    tabInactive: "#777777",
+    tabBorder: "#dddddd",
   },
 
   dark: {
@@ -29,6 +34,11 @@ const Colors = {
     placeholder: "#999999",
 
     header: "#1e1e1e",
+
+    tabBackground: "#1e1e1e",
+    tabActive: "#ffffff",
+    tabInactive: "#888888",
+    tabBorder: "#333333",
   },
 };
 
