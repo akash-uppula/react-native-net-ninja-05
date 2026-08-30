@@ -1,4 +1,5 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, TouchableWithoutFeedback, Keyboard } from "react-native";
+import { useState } from "react";
 import { router } from "expo-router";
 
 import ThemedView from "../../components/ThemedView";
@@ -8,24 +9,45 @@ import ThemedButton from "../../components/ThemedButton";
 import ThemedLink from "../../components/ThemedLink";
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = () => {
+    console.log("Email:", email);
+    console.log("Password:", password);
+
+    router.replace("/books");
+  };
+
   return (
-    <ThemedView safeArea style={styles.container}>
-      <ThemedText style={styles.title}>Welcome Back</ThemedText>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <ThemedView safeArea style={styles.container}>
+        <ThemedText style={styles.title}>Welcome Back</ThemedText>
 
-      <ThemedInput
-        placeholder="Email"
-        keyboardType="email-address"
-        autoCapitalize="none"
-      />
+        <ThemedInput
+          placeholder="Email"
+          keyboardType="email-address"
+          autoCapitalize="none"
+          value={email}
+          onChangeText={setEmail}
+          style={styles.input}
+        />
 
-      <ThemedInput placeholder="Password" secureTextEntry />
+        <ThemedInput
+          placeholder="Password"
+          secureTextEntry
+          value={password}
+          onChangeText={setPassword}
+          style={styles.input}
+        />
 
-      <ThemedButton title="Login" onPress={() => router.replace("/books")} />
+        <ThemedButton title="Login" onPress={handleLogin} />
 
-      <ThemedLink href="/register" style={styles.link}>
-        Don't have an account? Register
-      </ThemedLink>
-    </ThemedView>
+        <ThemedLink href="/register" style={styles.link}>
+          Don't have an account? Register
+        </ThemedLink>
+      </ThemedView>
+    </TouchableWithoutFeedback>
   );
 };
 
@@ -43,6 +65,10 @@ const styles = StyleSheet.create({
     fontSize: 28,
     fontWeight: "bold",
     marginBottom: 30,
+  },
+
+  input: {
+    width: "80%",
   },
 
   link: {

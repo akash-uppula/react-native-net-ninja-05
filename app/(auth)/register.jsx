@@ -1,4 +1,5 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, TouchableWithoutFeedback, Keyboard } from "react-native";
+import { useState } from "react";
 
 import ThemedView from "../../components/ThemedView";
 import ThemedText from "../../components/ThemedText";
@@ -7,29 +8,53 @@ import ThemedButton from "../../components/ThemedButton";
 import ThemedLink from "../../components/ThemedLink";
 
 const Register = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleRegister = () => {
+    console.log("Name:", name);
+    console.log("Email:", email);
+    console.log("Password:", password);
+  };
+
   return (
-    <ThemedView safeArea style={styles.container}>
-      <ThemedText style={styles.title}>Create Account</ThemedText>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <ThemedView safeArea style={styles.container}>
+        <ThemedText style={styles.title}>Create Account</ThemedText>
 
-      <ThemedInput placeholder="Name" autoCapitalize="words" />
+        <ThemedInput
+          placeholder="Name"
+          autoCapitalize="words"
+          value={name}
+          onChangeText={setName}
+          style={styles.input}
+        />
 
-      <ThemedInput
-        placeholder="Email"
-        keyboardType="email-address"
-        autoCapitalize="none"
-      />
+        <ThemedInput
+          placeholder="Email"
+          keyboardType="email-address"
+          autoCapitalize="none"
+          value={email}
+          onChangeText={setEmail}
+          style={styles.input}
+        />
 
-      <ThemedInput placeholder="Password" secureTextEntry />
+        <ThemedInput
+          placeholder="Password"
+          secureTextEntry
+          value={password}
+          onChangeText={setPassword}
+          style={styles.input}
+        />
 
-      <ThemedButton
-        title="Register"
-        onPress={() => console.log("Register pressed")}
-      />
+        <ThemedButton title="Register" onPress={handleRegister} />
 
-      <ThemedLink href="/login" style={styles.link}>
-        Already have an account? Login
-      </ThemedLink>
-    </ThemedView>
+        <ThemedLink href="/login" style={styles.link}>
+          Already have an account? Login
+        </ThemedLink>
+      </ThemedView>
+    </TouchableWithoutFeedback>
   );
 };
 
@@ -47,6 +72,10 @@ const styles = StyleSheet.create({
     fontSize: 28,
     fontWeight: "bold",
     marginBottom: 30,
+  },
+
+  input: {
+    width: "80%",
   },
 
   link: {

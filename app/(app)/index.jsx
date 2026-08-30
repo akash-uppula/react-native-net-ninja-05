@@ -27,6 +27,10 @@ const Home = () => {
         <Link href="/register" asChild>
           <ThemedButton title="Register" />
         </Link>
+
+        <Link href="/test-appwrite" asChild>
+          <ThemedButton title="Test Appwrite" />
+        </Link>
       </View>
     </ThemedView>
   );
