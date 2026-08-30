@@ -8,7 +8,7 @@ import ThemedImage from "../../components/ThemedImage";
 
 const Home = () => {
   return (
-    <ThemedView style={styles.container}>
+    <ThemedView safeArea style={styles.container}>
       <ThemedText style={styles.title}>My Shelf</ThemedText>
 
       <ThemedImage style={styles.image} />

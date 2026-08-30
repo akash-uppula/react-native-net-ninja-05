@@ -8,7 +8,7 @@ import ThemedLink from "../../components/ThemedLink";
 
 const Register = () => {
   return (
-    <ThemedView style={styles.container}>
+    <ThemedView safeArea style={styles.container}>
       <ThemedText style={styles.title}>Create Account</ThemedText>
 
       <ThemedInput placeholder="Name" autoCapitalize="words" />

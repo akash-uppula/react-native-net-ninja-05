@@ -5,7 +5,7 @@ import ThemedText from "../../components/ThemedText";
 
 const Books = () => {
   return (
-    <ThemedView style={styles.container}>
+    <ThemedView safeArea style={styles.container}>
       <ThemedText style={styles.title}>My Books</ThemedText>
 
       <ThemedText style={styles.text}>Your books will appear here.</ThemedText>

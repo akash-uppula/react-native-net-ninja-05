@@ -6,7 +6,7 @@ import ThemedButton from "../../components/ThemedButton";
 
 const Profile = () => {
   return (
-    <ThemedView style={styles.container}>
+    <ThemedView safeArea style={styles.container}>
       <ThemedText style={styles.title}>Profile</ThemedText>
 
       <ThemedText style={styles.text}>Welcome to your profile.</ThemedText>

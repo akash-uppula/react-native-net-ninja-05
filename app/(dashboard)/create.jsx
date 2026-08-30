@@ -7,7 +7,7 @@ import ThemedButton from "../../components/ThemedButton";
 
 const Create = () => {
   return (
-    <ThemedView style={styles.container}>
+    <ThemedView safeArea style={styles.container}>
       <ThemedText style={styles.title}>Add a Book</ThemedText>
 
       <ThemedInput placeholder="Book title" />

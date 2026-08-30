@@ -9,7 +9,7 @@ import ThemedLink from "../../components/ThemedLink";
 
 const Login = () => {
   return (
-    <ThemedView style={styles.container}>
+    <ThemedView safeArea style={styles.container}>
       <ThemedText style={styles.title}>Welcome Back</ThemedText>
 
       <ThemedInput
