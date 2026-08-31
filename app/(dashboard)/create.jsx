@@ -10,9 +10,9 @@ const Create = () => {
     <ThemedView safeArea style={styles.container}>
       <ThemedText style={styles.title}>Add a Book</ThemedText>
 
-      <ThemedInput placeholder="Book title" />
+      <ThemedInput placeholder="Book title" style={styles.input} />
 
-      <ThemedInput placeholder="Author" />
+      <ThemedInput placeholder="Author" style={styles.input} />
 
       <ThemedButton
         title="Add Book"
@@ -36,5 +36,9 @@ const styles = StyleSheet.create({
     fontSize: 28,
     fontWeight: "bold",
     marginBottom: 30,
+  },
+
+  input: {
+    width: "80%",
   },
 });

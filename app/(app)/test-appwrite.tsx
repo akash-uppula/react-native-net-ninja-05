@@ -1,17 +1,21 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Text, View } from "react-native";
 
 import { account } from "../../lib/appwrite";
 
 export default function TestAppwrite() {
+  const [user, setUser] = useState<any>(null);
+  const [message, setMessage] = useState("Loading...");
+
   useEffect(() => {
     async function checkUser() {
       try {
-        const user = await account.get();
+        const currentUser = await account.get();
 
-        console.log("Logged in user:", user);
+        setUser(currentUser);
+        setMessage("");
       } catch (error) {
-        console.log("No logged in user");
+        setMessage("No user is currently logged in.");
       }
     }
 
@@ -19,8 +23,18 @@ export default function TestAppwrite() {
   }, []);
 
   return (
-    <View>
-      <Text>Appwrite Connected</Text>
+    <View style={{ marginLeft: 20, marginTop: 20 }}>
+      <Text>Appwrite Connection Test</Text>
+
+      {user ? (
+        <View>
+          <Text>User ID: {user.$id}</Text>
+          <Text>Name: {user.name}</Text>
+          <Text>Email: {user.email}</Text>
+        </View>
+      ) : (
+        <Text>{message}</Text>
+      )}
     </View>
   );
 }

@@ -30,6 +30,13 @@ const AppLayout = () => {
           title: "My Shelf",
         }}
       />
+
+      <Stack.Screen
+        name="test-appwrite"
+        options={{
+          title: "Test Appwrite",
+        }}
+      />
     </Stack>
   );
 };

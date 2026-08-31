@@ -1,20 +1,32 @@
 import { StyleSheet } from "react-native";
+import { router } from "expo-router";
+
+import useAuth from "../../hooks/useAuth";
 
 import ThemedView from "../../components/ThemedView";
 import ThemedText from "../../components/ThemedText";
 import ThemedButton from "../../components/ThemedButton";
 
 const Profile = () => {
+  const { logout } = useAuth();
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+
+      router.replace("/login");
+    } catch (error) {
+      console.log("Logout Error:", error.message);
+    }
+  };
+
   return (
     <ThemedView safeArea style={styles.container}>
       <ThemedText style={styles.title}>Profile</ThemedText>
 
       <ThemedText style={styles.text}>Welcome to your profile.</ThemedText>
 
-      <ThemedButton
-        title="Logout"
-        onPress={() => console.log("Logout pressed")}
-      />
+      <ThemedButton title="Logout" onPress={handleLogout} />
     </ThemedView>
   );
 };
