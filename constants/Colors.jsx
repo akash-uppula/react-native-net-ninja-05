@@ -19,6 +19,9 @@ const Colors = {
     tabInactive: "#777777",
     tabBorder: "#dddddd",
 
+    card: "#f5f5f5",
+    border: "#dddddd",
+
     error: "#d32f2f",
   },
 
@@ -41,6 +44,9 @@ const Colors = {
     tabActive: "#ffffff",
     tabInactive: "#888888",
     tabBorder: "#333333",
+
+    card: "#1e1e1e",
+    border: "#333333",
 
     error: "#ff6b6b",
   },

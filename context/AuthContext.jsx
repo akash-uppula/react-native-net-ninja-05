@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 import { account, ID } from "../lib/appwrite";
 
@@ -6,6 +6,23 @@ export const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [authCheck, setAuthCheck] = useState(false);
+
+  const checkAuth = async () => {
+    try {
+      const userData = await account.get();
+
+      setUser(userData);
+    } catch (error) {
+      setUser(null);
+    } finally {
+      setAuthCheck(true);
+    }
+  };
+
+  useEffect(() => {
+    checkAuth();
+  }, []);
 
   const login = async (email, password) => {
     try {
@@ -58,6 +75,7 @@ const AuthProvider = ({ children }) => {
 
   const value = {
     user,
+    authCheck,
     login,
     register,
     logout,
