@@ -16,10 +16,14 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = () => {
-    login(email, password);
+  const handleLogin = async () => {
+    try {
+      await login(email, password);
 
-    router.replace("/books");
+      router.replace("/books");
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   return (

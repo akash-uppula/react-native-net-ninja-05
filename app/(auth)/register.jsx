@@ -1,5 +1,8 @@
 import { StyleSheet, TouchableWithoutFeedback, Keyboard } from "react-native";
 import { useState } from "react";
+import { router } from "expo-router";
+
+import useAuth from "../../hooks/useAuth";
 
 import ThemedView from "../../components/ThemedView";
 import ThemedText from "../../components/ThemedText";
@@ -8,14 +11,20 @@ import ThemedButton from "../../components/ThemedButton";
 import ThemedLink from "../../components/ThemedLink";
 
 const Register = () => {
+  const { register } = useAuth();
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleRegister = () => {
-    console.log("Name:", name);
-    console.log("Email:", email);
-    console.log("Password:", password);
+  const handleRegister = async () => {
+    try {
+      await register(name, email, password);
+
+      router.replace("/books");
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   return (

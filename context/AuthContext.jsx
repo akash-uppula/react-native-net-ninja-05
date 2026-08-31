@@ -1,36 +1,59 @@
 import { createContext, useState } from "react";
 
+import { account, ID } from "../lib/appwrite";
+
 export const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
-  const login = (email, password) => {
-    console.log("Login Email:", email);
-    console.log("Login Password:", password);
+  const login = async (email, password) => {
+    try {
+      await account.createEmailPasswordSession({
+        email,
+        password,
+      });
 
-    const userData = {
-      email,
-    };
+      const userData = await account.get();
 
-    setUser(userData);
+      setUser(userData);
+
+      return userData;
+    } catch (error) {
+      console.log("Login Error:", error);
+      throw error;
+    }
   };
 
-  const register = (name, email, password) => {
-    console.log("Register Name:", name);
-    console.log("Register Email:", email);
-    console.log("Register Password:", password);
+  const register = async (name, email, password) => {
+    try {
+      await account.create({
+        userId: ID.unique(),
+        email,
+        password,
+        name,
+      });
 
-    const userData = {
-      name,
-      email,
-    };
+      const userData = await login(email, password);
 
-    setUser(userData);
+      return userData;
+    } catch (error) {
+      console.log("Register Error:", error);
+      throw error;
+    }
   };
 
-  const logout = () => {
-    setUser(null);
+  const logout = async () => {
+    try {
+      await account.deleteSession({
+        sessionId: "current",
+      });
+
+      setUser(null);
+    } catch (error) {
+      console.log("Logout Error:", error);
+      throw error;
+    }
   };
 
   const value = {
