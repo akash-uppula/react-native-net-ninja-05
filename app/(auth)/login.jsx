@@ -2,6 +2,8 @@ import { StyleSheet, TouchableWithoutFeedback, Keyboard } from "react-native";
 import { useState } from "react";
 import { router } from "expo-router";
 
+import useAuth from "../../hooks/useAuth";
+
 import ThemedView from "../../components/ThemedView";
 import ThemedText from "../../components/ThemedText";
 import ThemedInput from "../../components/ThemedInput";
@@ -9,12 +11,13 @@ import ThemedButton from "../../components/ThemedButton";
 import ThemedLink from "../../components/ThemedLink";
 
 const Login = () => {
+  const { login } = useAuth();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleLogin = () => {
-    console.log("Email:", email);
-    console.log("Password:", password);
+    login(email, password);
 
     router.replace("/books");
   };
