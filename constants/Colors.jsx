@@ -18,6 +18,8 @@ const Colors = {
     tabActive: "#333333",
     tabInactive: "#777777",
     tabBorder: "#dddddd",
+
+    error: "#d32f2f",
   },
 
   dark: {
@@ -39,6 +41,8 @@ const Colors = {
     tabActive: "#ffffff",
     tabInactive: "#888888",
     tabBorder: "#333333",
+
+    error: "#ff6b6b",
   },
 };
 

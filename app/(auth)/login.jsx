@@ -9,20 +9,24 @@ import ThemedText from "../../components/ThemedText";
 import ThemedInput from "../../components/ThemedInput";
 import ThemedButton from "../../components/ThemedButton";
 import ThemedLink from "../../components/ThemedLink";
+import ThemedError from "../../components/ThemedError";
 
 const Login = () => {
   const { login } = useAuth();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const handleLogin = async () => {
     try {
+      setError("");
+
       await login(email, password);
 
       router.replace("/books");
     } catch (error) {
-      console.log(error.message);
+      setError(error.message);
     }
   };
 
@@ -47,6 +51,8 @@ const Login = () => {
           onChangeText={setPassword}
           style={styles.input}
         />
+
+        {error && <ThemedError>{error}</ThemedError>}
 
         <ThemedButton title="Login" onPress={handleLogin} />
 

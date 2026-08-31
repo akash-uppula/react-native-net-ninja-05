@@ -9,6 +9,7 @@ import ThemedText from "../../components/ThemedText";
 import ThemedInput from "../../components/ThemedInput";
 import ThemedButton from "../../components/ThemedButton";
 import ThemedLink from "../../components/ThemedLink";
+import ThemedError from "../../components/ThemedError";
 
 const Register = () => {
   const { register } = useAuth();
@@ -16,14 +17,17 @@ const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const handleRegister = async () => {
     try {
+      setError("");
+
       await register(name, email, password);
 
       router.replace("/books");
     } catch (error) {
-      console.log(error.message);
+      setError(error.message);
     }
   };
 
@@ -56,6 +60,8 @@ const Register = () => {
           onChangeText={setPassword}
           style={styles.input}
         />
+
+        {error && <ThemedError>{error}</ThemedError>}
 
         <ThemedButton title="Register" onPress={handleRegister} />
 
