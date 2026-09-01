@@ -7,6 +7,7 @@ export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [authCheck, setAuthCheck] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const checkAuth = async () => {
     try {
@@ -26,6 +27,8 @@ const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
+      setLoading(true);
+
       await account.createEmailPasswordSession({
         email,
         password,
@@ -39,11 +42,15 @@ const AuthProvider = ({ children }) => {
     } catch (error) {
       console.log("Login Error:", error);
       throw error;
+    } finally {
+      setLoading(false);
     }
   };
 
   const register = async (name, email, password) => {
     try {
+      setLoading(true);
+
       await account.create({
         userId: ID.unique(),
         email,
@@ -57,11 +64,15 @@ const AuthProvider = ({ children }) => {
     } catch (error) {
       console.log("Register Error:", error);
       throw error;
+    } finally {
+      setLoading(false);
     }
   };
 
   const logout = async () => {
     try {
+      setLoading(true);
+
       await account.deleteSession({
         sessionId: "current",
       });
@@ -70,12 +81,15 @@ const AuthProvider = ({ children }) => {
     } catch (error) {
       console.log("Logout Error:", error);
       throw error;
+    } finally {
+      setLoading(false);
     }
   };
 
   const value = {
     user,
     authCheck,
+    loading,
     login,
     register,
     logout,

@@ -1,5 +1,4 @@
 import { StyleSheet, View, useColorScheme } from "react-native";
-import { router } from "expo-router";
 
 import useAuth from "../../hooks/useAuth";
 import Colors from "../../constants/Colors";
@@ -7,9 +6,10 @@ import Colors from "../../constants/Colors";
 import ThemedView from "../../components/ThemedView";
 import ThemedText from "../../components/ThemedText";
 import ThemedButton from "../../components/ThemedButton";
+import ThemedLoading from "../../components/ThemedLoading";
 
 const Profile = () => {
-  const { user, logout } = useAuth();
+  const { user, logout, loading } = useAuth();
 
   const colorScheme = useColorScheme();
   const colors = Colors[colorScheme ?? "light"];
@@ -17,12 +17,14 @@ const Profile = () => {
   const handleLogout = async () => {
     try {
       await logout();
-
-      router.replace("/login");
     } catch (error) {
       console.log("Logout Error:", error.message);
     }
   };
+
+  if (loading) {
+    return <ThemedLoading />;
+  }
 
   return (
     <ThemedView safeArea style={styles.container}>

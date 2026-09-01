@@ -10,9 +10,10 @@ import ThemedInput from "../../components/ThemedInput";
 import ThemedButton from "../../components/ThemedButton";
 import ThemedLink from "../../components/ThemedLink";
 import ThemedError from "../../components/ThemedError";
+import ThemedLoading from "../../components/ThemedLoading";
 
 const Register = () => {
-  const { register } = useAuth();
+  const { register, loading } = useAuth();
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -30,6 +31,10 @@ const Register = () => {
       setError(error.message);
     }
   };
+
+  if (loading) {
+    return <ThemedLoading />;
+  }
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
