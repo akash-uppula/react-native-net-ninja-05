@@ -3,6 +3,7 @@ import { StatusBar } from "expo-status-bar";
 import { useColorScheme } from "react-native";
 
 import AuthProvider from "../context/AuthContext";
+import BookProvider from "../context/BookContext";
 
 const Layout = () => {
   const colorScheme = useColorScheme();
@@ -11,13 +12,15 @@ const Layout = () => {
 
   return (
     <AuthProvider>
-      <StatusBar style={isDark ? "light" : "dark"} />
+      <BookProvider>
+        <StatusBar style={isDark ? "light" : "dark"} />
 
-      <Stack
-        screenOptions={{
-          headerShown: false,
-        }}
-      />
+        <Stack
+          screenOptions={{
+            headerShown: false,
+          }}
+        />
+      </BookProvider>
     </AuthProvider>
   );
 };
