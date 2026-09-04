@@ -1,14 +1,13 @@
 import { FlatList, RefreshControl, StyleSheet } from "react-native";
 import { router } from "expo-router";
 
-import useBooks from "../../hooks/useBooks";
+import useBooks from "../../../hooks/useBooks";
 
-import ThemedView from "../../components/ThemedView";
-import ThemedText from "../../components/ThemedText";
-import ThemedButton from "../../components/ThemedButton";
-import ThemedLoading from "../../components/ThemedLoading";
-import ThemedError from "../../components/ThemedError";
-import ThemedCard from "../../components/ThemedCard";
+import ThemedView from "../../../components/ThemedView";
+import ThemedText from "../../../components/ThemedText";
+import ThemedLoading from "../../../components/ThemedLoading";
+import ThemedError from "../../../components/ThemedError";
+import ThemedCard from "../../../components/ThemedCard";
 
 const Books = () => {
   const { books, loading, error, fetchBooks } = useBooks();
@@ -21,8 +20,6 @@ const Books = () => {
     <ThemedView safeArea style={styles.container}>
       <ThemedView style={styles.header}>
         <ThemedText style={styles.title}>My Books</ThemedText>
-
-        <ThemedButton title="Add Book" onPress={() => router.push("/create")} />
       </ThemedView>
 
       {error && <ThemedError>{error}</ThemedError>}
@@ -34,11 +31,6 @@ const Books = () => {
           <ThemedText style={styles.emptyText}>
             Start building your shelf by adding a book.
           </ThemedText>
-
-          <ThemedButton
-            title="Add Your First Book"
-            onPress={() => router.push("/create")}
-          />
         </ThemedView>
       ) : (
         <FlatList
@@ -50,14 +42,10 @@ const Books = () => {
             <RefreshControl refreshing={loading} onRefresh={fetchBooks} />
           }
           renderItem={({ item }) => (
-            <ThemedCard>
+            <ThemedCard onPress={() => router.push(`/book/${item.$id}`)}>
               <ThemedText style={styles.bookTitle}>{item.title}</ThemedText>
 
               <ThemedText style={styles.author}>by {item.author}</ThemedText>
-
-              <ThemedText style={styles.description}>
-                {item.description}
-              </ThemedText>
 
               <ThemedText style={styles.rating}>⭐ {item.rating}/5</ThemedText>
             </ThemedCard>
@@ -84,7 +72,6 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 28,
     fontWeight: "bold",
-    marginBottom: 15,
   },
 
   list: {
@@ -94,17 +81,11 @@ const styles = StyleSheet.create({
   bookTitle: {
     fontSize: 20,
     fontWeight: "bold",
-    marginBottom: 5,
+    marginBottom: 8,
   },
 
   author: {
     fontSize: 15,
-    marginBottom: 12,
-  },
-
-  description: {
-    fontSize: 15,
-    lineHeight: 22,
     marginBottom: 12,
   },
 
@@ -128,6 +109,5 @@ const styles = StyleSheet.create({
   emptyText: {
     fontSize: 15,
     textAlign: "center",
-    marginBottom: 20,
   },
 });

@@ -1,12 +1,12 @@
 import { StyleSheet, View, useColorScheme } from "react-native";
 
-import useAuth from "../../hooks/useAuth";
-import Colors from "../../constants/Colors";
+import useAuth from "../../../hooks/useAuth";
+import Colors from "../../../constants/Colors";
 
-import ThemedView from "../../components/ThemedView";
-import ThemedText from "../../components/ThemedText";
-import ThemedButton from "../../components/ThemedButton";
-import ThemedLoading from "../../components/ThemedLoading";
+import ThemedView from "../../../components/ThemedView";
+import ThemedText from "../../../components/ThemedText";
+import ThemedButton from "../../../components/ThemedButton";
+import ThemedLoading from "../../../components/ThemedLoading";
 
 const Profile = () => {
   const { user, logout, loading } = useAuth();

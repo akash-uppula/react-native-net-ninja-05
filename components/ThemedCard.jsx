@@ -1,4 +1,4 @@
-import { useColorScheme } from "react-native";
+import { Pressable, useColorScheme } from "react-native";
 
 import Colors from "../constants/Colors";
 import ThemedView from "./ThemedView";
@@ -9,24 +9,31 @@ const ThemedCard = ({ children, style, ...props }) => {
   const colors = Colors[colorScheme ?? "light"];
 
   return (
-    <ThemedView
+    <Pressable
       {...props}
-      style={[
+      style={({ pressed }) => [
         {
           width: "80%",
           alignSelf: "center",
-          padding: 18,
           marginBottom: 15,
           borderWidth: 1,
           borderRadius: 12,
-          backgroundColor: colors.card,
           borderColor: colors.border,
+          opacity: pressed ? 0.7 : 1,
         },
         style,
       ]}
     >
-      {children}
-    </ThemedView>
+      <ThemedView
+        style={{
+          padding: 18,
+          borderRadius: 12,
+          backgroundColor: colors.card,
+        }}
+      >
+        {children}
+      </ThemedView>
+    </Pressable>
   );
 };
 

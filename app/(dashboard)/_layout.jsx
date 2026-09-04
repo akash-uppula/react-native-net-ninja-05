@@ -1,6 +1,5 @@
-import { Tabs } from "expo-router";
+import { Stack } from "expo-router";
 import { useColorScheme } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
 
 import Colors from "../../constants/Colors";
 import ProtectedRoute from "../../components/ProtectedRoute";
@@ -12,7 +11,7 @@ const DashboardLayout = () => {
 
   return (
     <ProtectedRoute>
-      <Tabs
+      <Stack
         screenOptions={{
           headerStyle: {
             backgroundColor: colors.header,
@@ -25,65 +24,22 @@ const DashboardLayout = () => {
           },
 
           headerShadowVisible: false,
-
-          tabBarStyle: {
-            backgroundColor: colors.tabBackground,
-            borderTopColor: colors.tabBorder,
-          },
-
-          tabBarActiveTintColor: colors.tabActive,
-
-          tabBarInactiveTintColor: colors.tabInactive,
         }}
       >
-        <Tabs.Screen
-          name="books"
+        <Stack.Screen
+          name="(tabs)"
           options={{
-            title: "Books",
-            tabBarLabel: "Books",
-
-            tabBarIcon: ({ color, size, focused }) => (
-              <Ionicons
-                name={focused ? "book" : "book-outline"}
-                size={size}
-                color={color}
-              />
-            ),
+            headerShown: false,
           }}
         />
 
-        <Tabs.Screen
-          name="create"
+        <Stack.Screen
+          name="book/[id]"
           options={{
-            title: "Create",
-            tabBarLabel: "Create",
-
-            tabBarIcon: ({ color, size, focused }) => (
-              <Ionicons
-                name={focused ? "add-circle" : "add-circle-outline"}
-                size={size}
-                color={color}
-              />
-            ),
+            title: "Book Details",
           }}
         />
-
-        <Tabs.Screen
-          name="profile"
-          options={{
-            title: "Profile",
-            tabBarLabel: "Profile",
-
-            tabBarIcon: ({ color, size, focused }) => (
-              <Ionicons
-                name={focused ? "person" : "person-outline"}
-                size={size}
-                color={color}
-              />
-            ),
-          }}
-        />
-      </Tabs>
+      </Stack>
     </ProtectedRoute>
   );
 };

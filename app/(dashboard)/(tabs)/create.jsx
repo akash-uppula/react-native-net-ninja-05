@@ -2,14 +2,14 @@ import { StyleSheet, TouchableWithoutFeedback, Keyboard } from "react-native";
 import { useState } from "react";
 import { router } from "expo-router";
 
-import useBooks from "../../hooks/useBooks";
+import useBooks from "../../../hooks/useBooks";
 
-import ThemedView from "../../components/ThemedView";
-import ThemedText from "../../components/ThemedText";
-import ThemedInput from "../../components/ThemedInput";
-import ThemedButton from "../../components/ThemedButton";
-import ThemedError from "../../components/ThemedError";
-import ThemedLoading from "../../components/ThemedLoading";
+import ThemedView from "../../../components/ThemedView";
+import ThemedText from "../../../components/ThemedText";
+import ThemedInput from "../../../components/ThemedInput";
+import ThemedButton from "../../../components/ThemedButton";
+import ThemedError from "../../../components/ThemedError";
+import ThemedLoading from "../../../components/ThemedLoading";
 
 const Create = () => {
   const { createBook, loading } = useBooks();
